@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from bson import ObjectId
 from fastapi.responses import RedirectResponse
 from db import collection
+from schemmas import Waleed
 
 app = FastAPI()
 
@@ -25,15 +26,25 @@ async def about(request: Request):
 
 @app.post("/submit",response_class=HTMLResponse)
 async def form_read(request: Request , name: str = Form(...) , msg: str = Form(...)):
-    collection.insert_one({
-        "name":name,
-        "msg":msg
-    })
-    return template.TemplateResponse('submit.html',{
-        "request":request,
-        "name":name,
-        "msg": msg
-    })
+    try:
+        # Pydantic Model Check data
+        note = Waleed(name=name , msg =msg)
+        if note.name and note.msg:
+            collection.insert_one({
+                "name":name,
+                "msg":msg
+            })
+            return template.TemplateResponse('submit.html',{
+                "request":request,
+                "name":name,
+                "msg": msg
+            })
+    except:
+        return template.TemplateResponse('index.html',{
+            "request":request,
+            "error": "Both Messages and Feilds are Required"
+        })
+
 
 @app.post("/",response_class=HTMLResponse)
 async def delete_form(request: Request,note_id: str = Form(...) ):

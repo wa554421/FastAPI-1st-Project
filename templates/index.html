@@ -13,6 +13,11 @@
         <label for="msg" >Enter Message :</label>
         <input id="msginput" name="msg" id="msg" placeholder="Enter Your Message ">
         <button type="submit">Submit</button>
+        <!-- Pydantic Model checks data id empty so show error -->
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
     </form>
     <a href="/about">Go to About Page</a>
     <h1>Saved Notes : </h1>
