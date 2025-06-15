@@ -1,0 +1,135 @@
+/* Base styles */
+body {
+    background-color: #111;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Main container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Links */
+a {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Form styling (for the main input form) */
+form { /* This targets your main form with "Enter Your Name" and "Enter Message" */
+    background-color: #1e1e1e;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    margin: 30px auto;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the main form elements */
+}
+
+label {
+    font-size: 1.1em;
+    text-align: left;
+    color: #ccc;
+}
+
+#nameinput {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1em;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+#msginput {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1em;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+input[type="text"]::placeholder {
+    color: #888;
+}
+
+button[type="submit"] { /* This targets your main 'Submit' button */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Notes list */
+.note {
+    background-color: #222;
+    padding: 20px;
+    margin: 15px auto;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: flex; /* Use flexbox for internal layout of note */
+    flex-direction: column; /* Stack note content vertically */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.note h3 {
+    margin: 5px 0;
+    font-weight: normal;
+    color: #eee;
+}
+
+/* Styling for the form that contains the delete button inside each note */
+.note form {
+    /* Override main form styles if needed, or ensure it flows correctly */
+    background-color: transparent; /* No background for this small form */
+    padding: 0; /* Remove padding */
+    box-shadow: none; /* No shadow */
+    margin: 10px 0 0 0; /* Only top margin, no auto for centering */
+    max-width: unset; /* Don't limit width of this small form */
+    display: inline-block; /* Treat this form as an inline block */
+    /* If you want the button aligned right, add:
+    align-self: flex-end; */
+}
+
+/* Delete Button Specific Styling */
+#deletebutton {
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+    border: none;
+    padding: 6px 12px; /* Smaller padding */
+    border-radius: 4px;
+    font-size: 0.9em; /* Smaller font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Remove any implicit margins that might create "black space" */
+    margin: 0;
+    display: inline-block; /* Ensure it behaves well in layout */
+    line-height: 1; /* Helps make it more compact vertically */
+}
+
+#deletebutton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}

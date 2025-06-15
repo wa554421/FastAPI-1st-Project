@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <h1>Welcome to My FastAPI Website</h1>
+    <p>This is the homepage.</p>
+    <form method="POST" action="/submit"  >
+        <label for="name">Enter Your Name :</label>
+        <input id="nameinput" name="name" id="name" placeholder="Enter Your Name " >
+        <label for="msg" >Enter Message :</label>
+        <input id="msginput" name="msg" id="msg" placeholder="Enter Your Message ">
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/about">Go to About Page</a>
+    <h1>Saved Notes : </h1>
+    {% for note in notes %}
+        <div class="note">
+            <h3>Name : {{ note.name }}</h3>
+            <h3>Message : {{ note.msg }}</h3>
+            <br>
+            <form method="POST" action="/">
+                <input type="hidden" name="note_id" value="{{note._id}}">
+                <button id="deletebutton" type="submit" >Delete</button>
+            </form>
+        </div>
+    {% else %}
+        <p>No Notes yet!</p>
+    {% endfor %}
+</body>
+</html>
